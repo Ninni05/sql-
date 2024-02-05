@@ -34,3 +34,16 @@ FROM
 
 ![Screenshot 2024-02-05 094523](https://github.com/Ninni05/sql-/assets/158822578/4b4093f6-c9ef-4087-8f5c-7661c4342a5c)
 
+Q 4: Find the total number of hospital beds available in each state.
+```sql
+SELECT
+  state_name,
+  SUM(total_hospital_beds) AS total_beds
+FROM
+  `bigquery-public-data.covid19_aha.hospital_beds`
+GROUP BY
+  state_name;
+```
+![Screenshot 2024-02-05 100244](https://github.com/Ninni05/sql-/assets/158822578/34373099-5fec-47e7-974f-4be7695acca7)
+
+
