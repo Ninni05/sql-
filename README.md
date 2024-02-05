@@ -79,17 +79,7 @@ WHERE
 ```
 ![Screenshot 2024-02-05 111225](https://github.com/Ninni05/sql-/assets/158822578/c61e7558-36f6-46c0-9134-fbd4d89cc39d)
 
-Q 7: Finding the state with the lowest number of acute long term care beds.
-```sql
-SELECT
-  state_name,
-  MIN(acute_long_term_care_beds) AS min_acute_long_term_care_beds
-FROM
-  `bigquery-public-data.covid19_aha.hospital_beds`
-GROUP BY
-  state_name;
-```
-![Screenshot 2024-02-05 112321](https://github.com/Ninni05/sql-/assets/158822578/780f6d12-1241-47b8-a101-57cf4b17a60e)
+Q 7: 
 
 Q 8: Finding the county with the highest number of skilled nursing care beds.
 ```sql
