@@ -104,20 +104,26 @@ LIMIT
 ```
 ![Screenshot 2024-02-05 112704](https://github.com/Ninni05/sql-/assets/158822578/a479688c-b9c8-4793-8a9e-0d0959aa875b)
 
-Q 9: Finding total number of physicians and dentists from a particular country.
+Q 9:Finding the country with highest number of psychiatric beds and total number of laboratory technicians.
 ```sql
 SELECT
-  s.physicians_and_dentists_ft
+  h.county_name,
+  h.state_name,
+  h.psychiatric_care_beds,
+  s.laboratory_technicians_ft
 FROM
+  `bigquery-public-data.covid19_aha.hospital_beds`h
+INNER JOIN
   `bigquery-public-data.covid19_aha.staffing`s
-JOIN
-  `bigquery-public-data.covid19_aha.staffing`h
 ON
-  s.county_fips_code = h.county_fips_code
-WHERE
-  h.county_name = 'WASHINGTON';
+  h.county_name = s.county_name
+ORDER BY
+  h.psychiatric_care_beds DESC
+LIMIT
+  1;
 ```
-![Screenshot 2024-02-05 113730](https://github.com/Ninni05/sql-/assets/158822578/69f34d94-8446-468a-b6fa-d19bd56e4269)
+![Screenshot 2024-02-05 115711](https://github.com/Ninni05/sql-/assets/158822578/5c2aabce-e9df-493f-9d4e-c38fefc5d605)
+
 
 Q 10: Finding the state with the highest number of physicians and dentists (full-time equivalent).
 ```sql
