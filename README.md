@@ -79,7 +79,20 @@ WHERE
 ```
 ![Screenshot 2024-02-05 111225](https://github.com/Ninni05/sql-/assets/158822578/c61e7558-36f6-46c0-9134-fbd4d89cc39d)
 
-Q 7: 
+Q 7: Calculate the total number of all types of care beds available in each state
+```sql
+  SELECT state_name,
+       SUM(acute_long_term_care_beds + alcohol_drug_abuse_dependency_inpatient_care_beds
+           + burn_care_beds + cardiac_intensive_care_beds + gen_medical_surgical_adult_beds
+           + gen_medical_surgical_pediatric_beds + intermediate_nursing_care_beds
+           + medical_surgical_intensive_care_beds + neonatal_intensive_care_beds + neonatal_intermediate_care_beds
+           + obstetric_care_beds + other_care_beds + other_intensive_care_beds + other_long_term_care_beds
+           + other_special_care_beds + pediatric_intensive_care_beds + physical_rehabilitation_care_beds
+           + psychiatric_care_beds + skilled_nursing_care_beds) AS total_care_beds
+FROM `bigquery-public-data.covid19_aha.hospital_beds`
+GROUP BY state_name;
+```
+![image](https://github.com/Ninni05/sql-/assets/158822578/6a3b4049-a89f-411d-a706-02ee41fc1ea8)
 
 Q 8: Finding the county with the highest number of skilled nursing care beds.
 ```sql
