@@ -46,4 +46,20 @@ GROUP BY
 ```
 ![Screenshot 2024-02-05 100244](https://github.com/Ninni05/sql-/assets/158822578/34373099-5fec-47e7-974f-4be7695acca7)
 
+Q 5: Find the county with the highest number of all other personnel (full-time and part-time combined).
+```sql
+SELECT
+  h.county_name
+FROM
+  `bigquery-public-data.covid19_aha.staffing` s
+JOIN
+  `bigquery-public-data.covid19_aha.hospital_beds` h
+ON
+  s.county_fips_code = h.county_fips_code
+ORDER BY
+  s.all_other_personnel_ft + s.all_other_personnel_pt DESC
+LIMIT
+  1;
+```
+![Screenshot 2024-02-05 100906](https://github.com/Ninni05/sql-/assets/158822578/81c75060-b391-4715-a7b0-4da503736d85)
 
